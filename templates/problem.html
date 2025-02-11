@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Challenge</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        
+        h1 {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin: 0;
+        }
+
+        .container {
+            margin: 20px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #4CAF50;
+        }
+
+        .code-block {
+            background-color: #f7f7f7;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Courier New', Courier, monospace;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .steps {
+            margin-top: 15px;
+        }
+
+        .steps ul {
+            list-style-type: decimal;
+            margin-left: 20px;
+        }
+
+        .steps li {
+            margin: 5px 0;
+        }
+
+        .problem {
+            background-color: #f1f1f1;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .problem a {
+            color: #4CAF50;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .problem a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Today's Learning Challenge</h1>
+
+    <div class="container">
+        <h2>Data Structure of the Day: {{ data_structure.name if data_structure else 'Not Available' }}</h2>
+        <p><strong>Description:</strong> {{ data_structure.description if data_structure else 'No description available' }}</p>
+        
+        <h3>Pseudocode:</h3>
+        <div class="code-block">
+            {{ data_structure.pseudocode if data_structure else 'No pseudocode available' }}
+        </div>
+        
+        <h3>Implementation:</h3>
+        <div class="code-block">
+            {{ data_structure.implementation if data_structure else 'No implementation available' }}
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Algorithm of the Day: {{ algorithm.name if algorithm else 'Not Available' }}</h2>
+        <p><strong>Description:</strong> {{ algorithm.description if algorithm else 'No description available' }}</p>
+        
+        <h3>Steps:</h3>
+        <div class="steps">
+            <ul>
+                {% for step in algorithm["pseudocode"].split('\n') %}
+                    <li>{{ step }}</li>
+                 {% endfor %}
+            </ul>
+        </div>
+
+    </div>
+
+    <div class="container problem">
+        <h2>Today's Problem:</h2>
+        <p>{{ problem if problem else 'No problem available' }}</p>
+        {% if problem.link %}
+            <p><a href="{{ problem.link }}" target="_blank">Click Here to Solve on LeetCode</a></p>
+        {% endif %}
+    </div>
+
+    <div class="footer">
+        <p>Happy Learning!</p>
+    </div>
+
+</body>
+</html>
